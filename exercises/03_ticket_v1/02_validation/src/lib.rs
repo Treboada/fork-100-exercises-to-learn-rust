@@ -12,12 +12,15 @@ impl Ticket {
     //   - the `title` should be at most 50 bytes long.
     //   - the `description` should be at most 500 bytes long.
     //  The method should panic if any of the requirements are not met.
-    //
     // You'll have to use what you learned in the previous exercises,
     // as well as some `String` methods. Use the documentation of Rust's standard library
     // to find the most appropriate options -> https://doc.rust-lang.org/std/string/struct.String.html
     fn new(title: String, description: String, status: String) -> Self {
-        todo!();
+        title.is_empty() && panic!("Title cannot be empty");
+        description.is_empty() && panic!("Description cannot be empty");
+        title.len() > 50 && panic!("Title cannot be longer than 50 bytes");
+        description.len() > 500 && panic!("Description cannot be longer than 500 bytes");
+        ["To-Do", "In Progress", "Done"].contains(&status.as_str()) || panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed");
         Self {
             title,
             description,

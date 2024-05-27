@@ -1,9 +1,18 @@
 // Define a struct named `Order` with the following fields:
 // - `price`, an unsigned integer
 // - `quantity`, an unsigned integer
+struct Order {
+    price: u64,
+    quantity: u64,
+}
 //
 // It should also have a method named `is_available` that returns a `true` if the quantity is
 // greater than 0, otherwise `false`.
+impl Order {
+    pub fn is_available(&self) -> bool {
+        self.quantity > 0
+    }
+}
 
 #[cfg(test)]
 mod tests {
